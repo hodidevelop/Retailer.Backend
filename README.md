@@ -8,9 +8,9 @@
 # RETAILER.backend - Experimental backend application
 
 Retailer.Backend is an experimental backend application for [retailer](https://github.com/hodidevelop/retailer).  
-It implements a simple order-invoice backend with REST-API surface and OpenAPI (swagger) support.
-This experimental project shows how can we decomposing a monolithic solution into docker/kubernetes microservices.
+It implements a simple order-invoice backend with REST-API surface and OpenAPI (swagger) support. 
+This experimental project shows how can we decompose a monolithic solution into docker/kubernetes microservices.
 
 ## License
 
-General is licensed under the MIT license.
+General is licensed under the [MIT license](https://mit-license.org).
