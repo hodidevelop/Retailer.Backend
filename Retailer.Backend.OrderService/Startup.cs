@@ -15,6 +15,7 @@ namespace Retailer.Backend.OrderService
     public class Startup
     {
         private const string SERVICE_NAME = "Retailer.Backend.OrderService";
+        private const string API_VERSION = "v1";
 
         public Startup(IConfiguration configuration)
         {
@@ -29,7 +30,7 @@ namespace Retailer.Backend.OrderService
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = SERVICE_NAME, Version = "v1" });
+                c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = SERVICE_NAME, Version = API_VERSION });
                 c.CustomOperationIds(apiDescription => apiDescription.ActionDescriptor.RouteValues["action"]);
             });
             services.AddOrderDbContext(Configuration);
@@ -38,7 +39,6 @@ namespace Retailer.Backend.OrderService
             services.AddOrderServices(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -47,7 +47,7 @@ namespace Retailer.Backend.OrderService
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/OrderService.yaml", $"{SERVICE_NAME} v1");
+                    c.SwaggerEndpoint($"/swagger/{API_VERSION}/swagger.json", $"{SERVICE_NAME} {API_VERSION}");
                     c.DisplayOperationId();
                 });
             }

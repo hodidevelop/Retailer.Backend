@@ -15,6 +15,7 @@ namespace Retailer.Backend.InvoiceService
     public class Startup
     {
         private const string SERVICE_NAME = "Retailer.Backend.InvoiceService";
+        private const string API_VERSION = "v1";
 
         public Startup(IConfiguration configuration)
         {
@@ -29,7 +30,7 @@ namespace Retailer.Backend.InvoiceService
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = SERVICE_NAME, Version = "v1" });
+                c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = SERVICE_NAME, Version = API_VERSION });
                 c.CustomOperationIds(apiDescription => apiDescription.ActionDescriptor.RouteValues["action"]);
             });
             services.AddInvoiceDbContext(Configuration);
@@ -46,7 +47,7 @@ namespace Retailer.Backend.InvoiceService
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/InvoiceService.yaml", $"{SERVICE_NAME} v1");
+                    c.SwaggerEndpoint($"/swagger/{API_VERSION}/swagger.json", $"{SERVICE_NAME} {API_VERSION}");
                     c.DisplayOperationId();
                 });
             }

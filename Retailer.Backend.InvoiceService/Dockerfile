@@ -7,6 +7,9 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["Retailer.Backend.InvoiceService/Retailer.Backend.InvoiceService.csproj", "Retailer.Backend.InvoiceService/"]
+COPY ["Retailer.Backend.Bll.InvoiceService/Retailer.Backend.Bll.InvoiceService.csproj", "Retailer.Backend.Bll.InvoiceService/"]
+COPY ["Retailer.Backend.Dal.InvoiceService/Retailer.Backend.Dal.InvoiceService.csproj", "Retailer.Backend.Dal.InvoiceService/"]
+COPY ["Retailer.Backend.Core/Retailer.Backend.Core.csproj", "Retailer.Backend.Core/"]
 RUN dotnet restore "Retailer.Backend.InvoiceService/Retailer.Backend.InvoiceService.csproj"
 COPY . .
 WORKDIR "/src/Retailer.Backend.InvoiceService"

@@ -7,6 +7,9 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["Retailer.Backend.OrderService/Retailer.Backend.OrderService.csproj", "Retailer.Backend.OrderService/"]
+COPY ["Retailer.Backend.Bll.OrderService/Retailer.Backend.Bll.OrderService.csproj", "Retailer.Backend.Bll.OrderService/"]
+COPY ["Retailer.Backend.Dal.OrderService/Retailer.Backend.Dal.OrderService.csproj", "Retailer.Backend.Dal.OrderService/"]
+COPY ["Retailer.Backend.Core/Retailer.Backend.Core.csproj", "Retailer.Backend.Core/"]
 RUN dotnet restore "Retailer.Backend.OrderService/Retailer.Backend.OrderService.csproj"
 COPY . .
 WORKDIR "/src/Retailer.Backend.OrderService"
