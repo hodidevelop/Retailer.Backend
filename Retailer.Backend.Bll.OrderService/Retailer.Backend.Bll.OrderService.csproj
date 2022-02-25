@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <OpenApiReference Include="..\Retailer.Backend.Core\OpenAPIs\InvoiceService.yaml" CodeGenerator="NSwagCSharp" Namespace="Retailer.Backend.Bll.OrderService.Services" ClassName="InvoiceServiceClient" Link="OpenAPIs\InvoiceService.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
     <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">
