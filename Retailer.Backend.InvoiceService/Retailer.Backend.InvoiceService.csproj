@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Retailer.Backend.Bll.InvoiceService\Retailer.Backend.Bll.InvoiceService.csproj" />
-    <ProjectReference Include="..\Retailer.Backend.Bll.OrderService\Retailer.Backend.Bll.OrderService.csproj" />
-    <ProjectReference Include="..\Retailer.Backend.Core\Retailer.Backend.Core.csproj" />
-    <ProjectReference Include="..\Retailer.Backend.Dal\Retailer.Backend.Dal.csproj" />
+    <ProjectReference Include="..\Retailer.Backend.Dal.InvoiceService\Retailer.Backend.Dal.InvoiceService.csproj" />
   </ItemGroup>
 
 </Project>

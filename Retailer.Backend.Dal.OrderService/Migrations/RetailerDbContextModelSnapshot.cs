@@ -2,48 +2,19 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Retailer.Backend.Dal;
+using Retailer.Backend.Dal.OrderService;
 
-namespace Retailer.Backend.Dal.Migrations
+namespace Retailer.Backend.Dal.OrderService.Migrations
 {
     [DbContext(typeof(RetailerDbContext))]
-    [Migration("20220221124125_InitialCreate")]
-    partial class InitialCreate
+    partial class RetailerDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.13");
-
-            modelBuilder.Entity("Retailer.Backend.Core.Models.DAO.Invoice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("AmountPaid")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("BillingAddress")
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("State")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Invoices");
-                });
 
             modelBuilder.Entity("Retailer.Backend.Core.Models.DAO.Order", b =>
                 {
@@ -80,18 +51,7 @@ namespace Retailer.Backend.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvoiceId");
-
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Retailer.Backend.Core.Models.DAO.Order", b =>
-                {
-                    b.HasOne("Retailer.Backend.Core.Models.DAO.Invoice", "Invoice")
-                        .WithMany()
-                        .HasForeignKey("InvoiceId");
-
-                    b.Navigation("Invoice");
                 });
 #pragma warning restore 612, 618
         }

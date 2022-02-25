@@ -1,12 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-using Retailer.Backend.Core.Abstractions;
+﻿using Retailer.Backend.Core.Abstractions;
 using Retailer.Backend.Core.Models.DAO.Base;
 using Retailer.Backend.Core.Models.Enums;
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Retailer.Backend.Core.Models.DAO
 {
@@ -27,9 +23,6 @@ namespace Retailer.Backend.Core.Models.DAO
 
         public double Quantity { get; set; }
 
-        [ForeignKey(nameof(Invoice))]
         public int? InvoiceId { get; set; }
-
-        public virtual Invoice Invoice { get; set; }
     }
 }

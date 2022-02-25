@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Retailer.Backend.Monolithic
+namespace Retailer.Backend.OrderService
 {
     public class Program
     {

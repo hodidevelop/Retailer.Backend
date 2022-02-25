@@ -4,18 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Retailer.Backend.Core.Abstractions;
 
-namespace Retailer.Backend.Dal
+namespace Retailer.Backend.Dal.InvoiceService
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInvoiceDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             RetailerDbContext.IsMigration = false;
-
-            services.AddDbContext<IRetailerOrderDbContext, RetailerDbContext>(options =>
-            {
-                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
-            });
 
             services.AddDbContext<IRetailerInvoiceDbContext, RetailerDbContext>(options =>
             {

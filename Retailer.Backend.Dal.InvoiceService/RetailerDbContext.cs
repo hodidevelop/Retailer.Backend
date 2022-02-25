@@ -1,20 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 using Retailer.Backend.Core.Abstractions;
 using Retailer.Backend.Core.Models.DAO;
 
-using System.Diagnostics;
-using System.IO;
-
-namespace Retailer.Backend.Dal
+namespace Retailer.Backend.Dal.InvoiceService
 {
-    public class RetailerDbContext : DbContext, IRetailerOrderDbContext, IRetailerInvoiceDbContext
+    public class RetailerDbContext : DbContext, IRetailerInvoiceDbContext
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "Type-level static field necessary here")]
         public static bool IsMigration = true;
 
         public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<Order> Orders { get; set; }
 
         protected bool _isMigrated = false;
 

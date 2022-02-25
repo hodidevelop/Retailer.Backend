@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <OpenApiReference Include="..\Retailer.Backend.Core\OpenAPIs\OrderService.yaml" CodeGenerator="NSwagCSharp" Namespace="Retailer.Backend.Bll.InvoiceService.Services" ClassName="OrderServiceClient" Link="OpenAPIs\OrderService.yaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
@@ -21,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Retailer.Backend.Dal\Retailer.Backend.Dal.csproj" />
+    <ProjectReference Include="..\Retailer.Backend.Dal.InvoiceService\Retailer.Backend.Dal.InvoiceService.csproj" />
   </ItemGroup>
 
 </Project>

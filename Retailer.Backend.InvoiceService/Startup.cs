@@ -6,14 +6,18 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using Retailer.Backend.Bll.InvoiceService;
-using Retailer.Backend.Bll.OrderService;
-using Retailer.Backend.Dal;
+using Retailer.Backend.Bll.InvoiceService.AutoMapper;
 using Retailer.Backend.Core;
+using Retailer.Backend.Core.AutoMapper;
+using Retailer.Backend.Dal.InvoiceService;
 
-namespace Retailer.Backend.Monolithic
+namespace Retailer.Backend.InvoiceService
 {
     public class Startup
     {
+        private const string SERVICE_NAME = "Retailer.Backend.InvoiceService";
+        private const string API_VERSION = "v1";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,24 +25,21 @@ namespace Retailer.Backend.Monolithic
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Retailer.Backend.Monolithic", Version = "v1" });
+                c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = SERVICE_NAME, Version = API_VERSION });
                 c.CustomOperationIds(apiDescription => apiDescription.ActionDescriptor.RouteValues["action"]);
             });
-            services.AddDbContext(Configuration);
+            services.AddInvoiceDbContext(Configuration);
             services.AddCoreServices();
-            services.AddOrderServices(Configuration);
+            services.AddAutoMapper(typeof(RetailerDataMappingProfile), typeof(InvoiceServiceDataMappingProfile));
             services.AddInvoiceServices(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -47,11 +48,10 @@ namespace Retailer.Backend.Monolithic
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Retailer.Backend.Monolithic v1");
+                    c.SwaggerEndpoint($"/swagger/{API_VERSION}/swagger.json", $"{SERVICE_NAME} {API_VERSION}");
                     c.DisplayOperationId();
                 });
             }
-            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
