@@ -5,7 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
+using Retailer.Backend.Bll.InvoiceService;
 using Retailer.Backend.Core;
+using Retailer.Backend.Core.AutoMapper;
 using Retailer.Backend.Dal.InvoiceService;
 
 namespace Retailer.Backend.InvoiceService
@@ -32,6 +34,8 @@ namespace Retailer.Backend.InvoiceService
             });
             services.AddInvoiceDbContext(Configuration);
             services.AddCoreServices();
+            services.AddAutoMapper(typeof(RetailerDataMappingProfile));
+            services.AddInvoiceServices(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
