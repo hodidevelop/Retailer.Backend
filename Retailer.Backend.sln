@@ -7,11 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer.Backend.Monolithic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer.Backend.Core", "Retailer.Backend.Core\Retailer.Backend.Core.csproj", "{9459F0CB-9DF7-40F6-AF50-1BDEF04F787C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer.Backend.Dal", "Retailer.Backend.Dal\Retailer.Backend.Dal.csproj", "{A9D4E789-1DB6-4A15-8D9C-CFFC0FB66671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer.Backend.Dal", "Retailer.Backend.Dal\Retailer.Backend.Dal.csproj", "{A9D4E789-1DB6-4A15-8D9C-CFFC0FB66671}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer.Backend.Bll.OrderService", "Retailer.Backend.Bll.OrderService\Retailer.Backend.Bll.OrderService.csproj", "{1675514B-98C4-4817-9998-73554B7A8941}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer.Backend.Bll.InvoiceService", "Retailer.Backend.Bll.InvoiceService\Retailer.Backend.Bll.InvoiceService.csproj", "{A6E572CF-A279-427E-9ACD-D9C21ADC1003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7012AFE7-9B14-4554-9E9B-ECAC06C78E63}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
