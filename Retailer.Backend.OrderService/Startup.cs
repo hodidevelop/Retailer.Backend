@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using Retailer.Backend.Bll.OrderService;
+using Retailer.Backend.Bll.OrderService.AutoMapper;
 using Retailer.Backend.Core;
 using Retailer.Backend.Core.AutoMapper;
 using Retailer.Backend.Dal.OrderService;
@@ -35,7 +36,7 @@ namespace Retailer.Backend.OrderService
             });
             services.AddOrderDbContext(Configuration);
             services.AddCoreServices();
-            services.AddAutoMapper(typeof(RetailerDataMappingProfile));
+            services.AddAutoMapper(typeof(RetailerDataMappingProfile), typeof(OrderServiceDataMappingProfile));
             services.AddOrderServices(Configuration);
         }
 
