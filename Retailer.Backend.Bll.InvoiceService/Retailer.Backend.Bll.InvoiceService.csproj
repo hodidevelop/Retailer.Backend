@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Retailer.Backend.Dal\Retailer.Backend.Dal.csproj" />
+    <ProjectReference Include="..\Retailer.Backend.Dal.InvoiceService\Retailer.Backend.Dal.InvoiceService.csproj" />
   </ItemGroup>
 
 </Project>
