@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -12,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Retailer.Backend.Bll.InvoiceService\Retailer.Backend.Bll.InvoiceService.csproj" />
     <ProjectReference Include="..\Retailer.Backend.Dal.InvoiceService\Retailer.Backend.Dal.InvoiceService.csproj" />
   </ItemGroup>
 

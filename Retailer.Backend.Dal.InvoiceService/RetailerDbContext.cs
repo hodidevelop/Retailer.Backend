@@ -7,6 +7,7 @@ namespace Retailer.Backend.Dal.InvoiceService
 {
     public class RetailerDbContext : DbContext, IRetailerInvoiceDbContext
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "Type-level static field necessary here")]
         public static bool IsMigration = true;
 
         public DbSet<Invoice> Invoices { get; set; }

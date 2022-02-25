@@ -1,21 +1,19 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Retailer.Backend.Core;
+using Retailer.Backend.Dal.OrderService;
 
 namespace Retailer.Backend.OrderService
 {
     public class Startup
     {
+        private const string SERVICE_NAME = "Retailer.Backend.OrderService";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,15 +21,17 @@ namespace Retailer.Backend.OrderService
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddSwaggerGenNewtonsoftSupport();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Retailer.Backend.OrderService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = SERVICE_NAME, Version = "v1" });
+                c.CustomOperationIds(apiDescription => apiDescription.ActionDescriptor.RouteValues["action"]);
             });
+            services.AddOrderDbContext(Configuration);
+            services.AddCoreServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,13 +41,14 @@ namespace Retailer.Backend.OrderService
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Retailer.Backend.OrderService v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/OrderService.yaml", $"{SERVICE_NAME} v1");
+                    c.DisplayOperationId();
+                });
             }
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

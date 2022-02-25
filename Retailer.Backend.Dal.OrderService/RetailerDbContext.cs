@@ -7,6 +7,7 @@ namespace Retailer.Backend.Dal.OrderService
 {
     public class RetailerDbContext : DbContext, IRetailerOrderDbContext
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "Type-level static field necessary here")]
         public static bool IsMigration = true;
 
         public DbSet<Order> Orders { get; set; }

@@ -7,7 +7,7 @@ using Retailer.Backend.Core.Models.Enums;
 
 using System.Threading.Tasks;
 
-namespace Retailer.Backend.Monolithic.Controllers
+namespace Retailer.Backend.OrderService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
