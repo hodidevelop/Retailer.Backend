@@ -15,17 +15,14 @@ namespace Retailer.Backend.InvoiceService.Controllers
     public class InvoicesController : ControllerBase
     {
         private readonly IDbInvoiceService _invoiceService;
-        private readonly IDbOrderService _orderService;
+        private readonly IOrderService _orderService;
 
         public InvoicesController(
             IDbInvoiceService invoiceService,
-            IDbOrderService orderService)
+            IOrderService orderService)
         {
             _invoiceService = invoiceService;
             _orderService = orderService;
-
-            if (_invoiceService.DbContext is IRetailerOrderDbContext invoiceServiceDbContext)
-                _orderService.DbContext = invoiceServiceDbContext;
         }
 
         [HttpGet("{id}")]
@@ -51,7 +48,6 @@ namespace Retailer.Backend.InvoiceService.Controllers
             invoiceRequest.SetOrderData((OrderDto)orderDto);
             var invoiceDto = await _invoiceService.CreateInvoiceAsync(invoiceRequest);
             await _orderService.BillOrderAsync(invoiceRequest.OrderId, invoiceDto.Id);
-            await _orderService.SaveChangesAsync();
             return CreatedAtAction("GetInvoiceById", new { id = invoiceDto.Id }, invoiceDto);
         }
 

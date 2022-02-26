@@ -14,17 +14,14 @@ namespace Retailer.Backend.OrderService.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IDbOrderService _orderService;
-        private readonly IDbInvoiceService _invoiceService;
+        private readonly IInvoiceService _invoiceService;
 
         public OrdersController(
             IDbOrderService orderService,
-            IDbInvoiceService invoiceService)
+            IInvoiceService invoiceService)
         {
             _orderService = orderService;
             _invoiceService = invoiceService;
-
-            if (_orderService.DbContext is IRetailerInvoiceDbContext orderServiceDbContext)
-                _invoiceService.DbContext = orderServiceDbContext;
         }
 
         [HttpGet("{id}")]
