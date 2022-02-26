@@ -12,7 +12,7 @@ namespace Retailer.Backend.Dal.OrderService
 
         public DbSet<Order> Orders { get; set; }
 
-        protected bool _isMigrated = false;
+        protected static bool _isMigrated = false;
 
         public RetailerDbContext() : base()
         { } // used by Migration (design-time)
