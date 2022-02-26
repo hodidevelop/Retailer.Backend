@@ -28,17 +28,18 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+[Oo]bj/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
 
-[Oo]bj/
-!Retailer.Backend.Bll.InvoiceService/obj/
-Retailer.Backend.Bll.InvoiceService/obj/**
-!Retailer.Backend.Bll.InvoiceService/obj/OrderServiceClient.cs
-!Retailer.Backend.Bll.OrderService/obj/
-Retailer.Backend.Bll.OrderService/obj/**
-!Retailer.Backend.Bll.OrderService/obj/InvoiceServiceClient.cs
+# The connected service clients will be generated into obj folder when neccessary (cannot be ignored)
+# !Retailer.Backend.Bll.InvoiceService/obj/
+# Retailer.Backend.Bll.InvoiceService/obj/**
+# !Retailer.Backend.Bll.InvoiceService/obj/OrderServiceClient.cs
+# !Retailer.Backend.Bll.OrderService/obj/
+# Retailer.Backend.Bll.OrderService/obj/**
+# !Retailer.Backend.Bll.OrderService/obj/InvoiceServiceClient.cs
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
