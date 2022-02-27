@@ -135,17 +135,32 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/OrderRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             }
           }
@@ -335,7 +350,11 @@
             "format": "int32"
           },
           "state": {
-            "$ref": "#/components/schemas/InvoiceState"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/InvoiceState"
+              }
+            ]
           },
           "billingAddress": {
             "maxLength": 255,
@@ -361,7 +380,11 @@
             "format": "int32"
           },
           "state": {
-            "$ref": "#/components/schemas/OrderState"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrderState"
+              }
+            ]
           },
           "customerName": {
             "type": "string",
@@ -389,7 +412,12 @@
             "nullable": true
           },
           "invoice": {
-            "$ref": "#/components/schemas/InvoiceDto"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/InvoiceDto"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false

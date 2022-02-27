@@ -33,6 +33,7 @@ namespace Retailer.Backend.InvoiceService
             {
                 c.SwaggerDoc(API_VERSION, new OpenApiInfo { Title = SERVICE_NAME, Version = API_VERSION });
                 c.CustomOperationIds(apiDescription => apiDescription.ActionDescriptor.RouteValues["action"]);
+                c.UseAllOfToExtendReferenceSchemas();
             });
             services.AddInvoiceDbContext(Configuration);
             services.AddCoreServices();

@@ -610,7 +610,7 @@ namespace Retailer.Backend.Bll.InvoiceService.Services
         [Newtonsoft.Json.JsonProperty("invoiceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? InvoiceId { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("invoice", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("invoice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public InvoiceDto Invoice { get; set; }
     
     
