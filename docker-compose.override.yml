@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  retailer.backend.orderservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5010:80
+
+  retailer.backend.invoiceservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5020:80
+

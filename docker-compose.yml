@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  retailer.backend.orderservice:
+    image: ${DOCKER_REGISTRY-}retailerbackendorderservice
+    build:
+      context: .
+      dockerfile: Retailer.Backend.OrderService/Dockerfile
+
+  retailer.backend.invoiceservice:
+    image: ${DOCKER_REGISTRY-}retailerbackendinvoiceservice
+    build:
+      context: .
+      dockerfile: Retailer.Backend.InvoiceService/Dockerfile
+
