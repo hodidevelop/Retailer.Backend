@@ -135,17 +135,32 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InvoiceRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvoiceRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/InvoiceRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvoiceRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/InvoiceRequestDto"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InvoiceRequestDto"
+                  }
+                ],
+                "nullable": true
               }
             }
           }
@@ -304,7 +319,11 @@
             "format": "int32"
           },
           "state": {
-            "$ref": "#/components/schemas/InvoiceState"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/InvoiceState"
+              }
+            ]
           },
           "billingAddress": {
             "maxLength": 255,
